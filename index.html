@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b3d47">
 <title>رحلة ديسمبر ٢٠٢٦ · عرض السفر</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
@@ -123,21 +124,137 @@ aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
 .sendbtn:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .sendbtn.mini{padding:9px 14px;font-size:14px}
 .send small{font-size:12px;color:var(--muted)}
-</style>
 
+/* ===== v2 visual layer ===== */
+:root{
+  --bg:#f6f2ea; --surface:#fffdf9; --sunk:#efe8dc; --fg:#1b2430; --muted:#6a6f78; --line:#e3dacb;
+  --accent:#0f6b63; --accent-soft:#dcefeb; --accent-2:#1d8f84; --tile:#a3742a; --ink:#13202b;
+  --hero-a:#0b3d47; --hero-b:#0f6b63; --hero-c:#2b9b8c;
+  --shadow:0 1px 2px rgba(27,36,48,.05),0 6px 20px -8px rgba(27,36,48,.14);
+  --shadow-lg:0 2px 4px rgba(27,36,48,.06),0 18px 40px -16px rgba(27,36,48,.28);
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1418; --surface:#171e24; --sunk:#1f282f; --fg:#ece6dc; --muted:#9aa3ab; --line:#2a343c;
+  --accent:#4cc2b2; --accent-soft:#163631; --accent-2:#6fd6c7; --tile:#d9aa5c; --ink:#0b1014;
+  --hero-a:#082a31; --hero-b:#0c4f49; --hero-c:#13786b;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -10px rgba(0,0,0,.6); --shadow-lg:0 20px 44px -16px rgba(0,0,0,.7); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1418; --surface:#171e24; --sunk:#1f282f; --fg:#ece6dc; --muted:#9aa3ab; --line:#2a343c;
+  --accent:#4cc2b2; --accent-soft:#163631; --accent-2:#6fd6c7; --tile:#d9aa5c; --ink:#0b1014;
+  --hero-a:#082a31; --hero-b:#0c4f49; --hero-c:#13786b;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -10px rgba(0,0,0,.6); --shadow-lg:0 20px 44px -16px rgba(0,0,0,.7); color-scheme:dark}
+.wrap[data-pkg^="cap"],.mobilebar[data-pkg^="cap"]{--accent:#a4482a;--accent-soft:#f6e3da;--accent-2:#c8673f;--hero-a:#4a1f16;--hero-b:#8e3a22;--hero-c:#d07a45}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .wrap[data-pkg^="cap"],.mobilebar[data-pkg^="cap"]{--accent:#ec9a6e;--accent-soft:#3a2018;--accent-2:#f3b28c;--hero-a:#2a120c;--hero-b:#5e2514;--hero-c:#9c4a26}}
+:root[data-theme="dark"] .wrap[data-pkg^="cap"],.mobilebar[data-pkg^="cap"]{--accent:#ec9a6e;--accent-soft:#3a2018;--accent-2:#f3b28c;--hero-a:#2a120c;--hero-b:#5e2514;--hero-c:#9c4a26}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);font-size:15.5px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1140px;padding-top:22px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.brand b{font-family:var(--display);font-size:20px;display:block;line-height:1.2}
+.brand small{color:var(--muted);font-size:12.5px}
+.mark{width:40px;height:40px;border-radius:12px;flex:none;background:
+  conic-gradient(from 45deg,var(--hero-c) 0 25%,var(--hero-b) 0 50%,var(--hero-c) 0 75%,var(--hero-b) 0) center/20px 20px;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.25),var(--shadow);transition:background .4s}
+.pkgs{border:0;gap:6px;padding:5px;background:var(--surface);border-radius:999px;box-shadow:var(--shadow);overflow-x:auto;scrollbar-width:none;width:max-content;max-width:100%;margin-bottom:18px}
+.pkgs::-webkit-scrollbar{display:none}
+.pkgs button{border:0;margin:0;border-radius:999px;padding:9px 18px;font-size:15px;white-space:nowrap;transition:background .2s,color .2s}
+.pkgs button:hover{color:var(--fg)}
+.pkgs button[aria-selected="true"]{background:var(--accent);color:#fff;border:0;box-shadow:0 6px 16px -8px var(--accent)}
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:clamp(22px,4vw,40px);margin-bottom:26px;color:#fff;
+  background:
+   radial-gradient(120% 90% at 0% 0%,rgba(255,255,255,.14),transparent 55%),
+   linear-gradient(135deg,var(--hero-a),var(--hero-b) 55%,var(--hero-c));
+  box-shadow:var(--shadow-lg);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.13;
+  background:
+   repeating-conic-gradient(from 45deg,#fff 0 25%,transparent 0 50%) 0 0/34px 34px;
+  -webkit-mask-image:linear-gradient(to left,#000,transparent 70%);mask-image:linear-gradient(to left,#000,transparent 70%)}
+.hero::after{content:"";position:absolute;inset:auto -10% -55% auto;width:420px;height:420px;border-radius:50%;z-index:-1;
+  background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%)}
+.hero .eyebrow{color:rgba(255,255,255,.82);font-size:12.5px;letter-spacing:.04em}
+.hero h1{font-size:clamp(28px,5.2vw,44px);line-height:1.15;color:#fff}
+.hero h1 span{display:block;font-family:var(--body);font-weight:500;font-size:clamp(14px,2vw,16.5px);color:rgba(255,255,255,.85);margin-top:10px;line-height:1.6}
+.hero .route{gap:6px;margin-top:6px}
+.hero .leg{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:5px 13px;font-size:13.5px;transition:background .2s}
+.hero .leg:hover{background:rgba(255,255,255,.22)}
+.hero .leg b{color:#fff}
+.hero .arrow{color:rgba(255,255,255,.55)}
+.layout{grid-template-columns:minmax(0,1fr) 340px;gap:28px}
+.block{border:1px solid var(--line);box-shadow:var(--shadow);padding:18px}
+section>h2:first-child{margin-top:0}
+.stage{font-size:22px;margin:30px 0 8px;padding-inline-start:14px;position:relative}
+.stage::before{content:"";position:absolute;inset-inline-start:0;top:.25em;bottom:.25em;width:4px;border-radius:4px;background:linear-gradient(var(--accent-2),var(--accent))}
+.fixed-row .chosen{font-size:15px}
+.fixed-row .price{color:var(--accent);font-size:20px}
+.controls{margin-top:6px}
+.seg{box-shadow:var(--shadow);border-color:transparent}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.chk{box-shadow:var(--shadow);border-color:transparent}
+.list{gap:12px}
+.hotel{border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);border:1.5px solid transparent;transition:border-color .2s,box-shadow .2s,transform .2s;position:relative}
+.hotel:hover{border-color:var(--line);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.hotel.sel{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft),var(--shadow-lg);background:linear-gradient(to left,var(--surface) 70%,var(--accent-soft))}
+.hname{font-size:16.5px}
+.rank{display:inline-grid;place-items:center;min-width:26px;height:22px;border-radius:7px;background:var(--sunk);font-size:12px;color:var(--muted)}
+.hotel.sel .rank{background:var(--accent);color:#fff}
+.stars{color:var(--tile)}
+.tag{padding:3px 10px}
+.hprice .n{font-family:var(--display);font-size:22px;color:var(--fg)}
+.hotel.sel .hprice .n{color:var(--accent)}
+.sum{border:0;box-shadow:var(--shadow-lg);padding:0;overflow:hidden;gap:0}
+.sum>h2{margin:0;padding:16px 20px;color:#fff;font-size:18px;background:linear-gradient(135deg,var(--hero-a),var(--hero-b))}
+.sum>*:not(h2){margin-inline:20px}
+.sum .line{padding-top:10px}
+.sum .sub{margin-top:2px}
+.sum hr{margin:12px 20px}
+.total{font-size:34px;color:var(--accent)}
+.pp{margin-top:4px}
+.sum .send{margin-bottom:20px}
+.sendbtn{border-radius:12px;padding:12px 14px;background:linear-gradient(135deg,#25d366,#128c4a);box-shadow:0 8px 18px -10px #128c4a;transition:transform .15s,filter .15s}
+.sendbtn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.send input{border-radius:12px;background:var(--bg)}
+.plan .day{border-top:1px dashed var(--line)}
+.plan .dh b{background:var(--accent-soft);color:var(--accent);border-radius:8px;padding:1px 9px}
+.plan .tip{border-radius:12px}
+.foot{padding:4px 2px}
+.pkgcard{padding:20px;display:grid;gap:14px;border:1.5px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft),var(--shadow-lg)}
+.pkghead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pkghead small{color:var(--muted);display:block;font-size:13px}
+.pkgprice{text-align:left}
+.pkgprice .price{font-family:var(--display);font-size:30px;color:var(--accent);display:block;line-height:1.1}
+.pkgprice small{color:var(--muted);font-size:12.5px}
+.stays{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.stays li{display:flex;gap:12px;align-items:flex-start;background:var(--sunk);border-radius:12px;padding:12px 14px}
+.stays b{display:block;font-size:15px}
+.stays small{color:var(--muted);font-size:13px}
+.sn{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--display);font-weight:700;font-size:14px}
+.sn.car{font-size:16px;background:var(--tile)}
+@media (max-width:860px){
+  .mobilebar{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 -8px 24px -12px rgba(0,0,0,.25);border-top:1px solid var(--line)}
+  .mobilebar .total{font-size:26px}
+  .pkgs{width:auto}
+}
+@media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}aside.sum{position:static}}
+@media (max-width:560px){.hero{border-radius:20px}.stage{font-size:20px}.hprice .n{font-size:20px}}
+@media (prefers-reduced-motion:reduce){.hotel:hover,.sendbtn:hover{transform:none}}
+</style>
 </head>
 <body>
+
 <div class="wrap" dir="rtl" lang="ar">
+  <div class="brand"><div class="mark" aria-hidden="true"></div><div><b>رحلة ديسمبر ٢٠٢٦</b><small>عرض سفر خاص · شخصان · تركيا</small></div></div>
   <nav class="pkgs" role="tablist" aria-label="الباقات">
     <button role="tab" id="tab-tzx" aria-selected="true" data-pkg="tzx">باقة طرابزون</button>
+    <button role="tab" id="tab-tzx2" aria-selected="false" data-pkg="tzx2">باقة طرابزون ٢</button>
     <button role="tab" id="tab-cap" aria-selected="false" data-pkg="cap">باقة كابادوكيا</button>
     <button role="tab" id="tab-cap2" aria-selected="false" data-pkg="cap2">باقة كابادوكيا ٢</button>
   </nav>
 
   <div id="pkg-tzx">
-  <header>
+  <header class="hero">
     <div class="eyebrow">عرض رحلة · شخصان · ٣–١٥ ديسمبر ٢٠٢٦</div>
-    <h1>اختر سكن كل محطة، والسعر النهائي يتحدّث مباشرة</h1>
+    <h1>رحلة البحر الأسود<span>طرابزون وآيدر وأوزونغول · اختر سكن كل محطة والسعر يتحدّث مباشرة</span></h1>
     <div class="route">
       <a class="leg" href="#ist"><b>إسطنبول</b> ٣–٦ ديسمبر · ٣ ليالٍ</a><span class="arrow">←</span>
       <a class="leg" href="#tzx"><b>طرابزون</b> ٦–٧ · ليلة</a><span class="arrow">←</span>
@@ -260,10 +377,92 @@ aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
   </div>
   </div>
 
-  <div id="pkg-cap" hidden>
-  <header>
+  <div id="pkg-tzx2" hidden>
+  <header class="hero">
     <div class="eyebrow">عرض رحلة · شخصان · ٣–١٥ ديسمبر ٢٠٢٦</div>
-    <h1>اختر سكن كل محطة، والسعر النهائي يتحدّث مباشرة</h1>
+    <h1>باقة البحر الأسود الجاهزة<span>ست ليالٍ بين البحر والوادي، وسيارة معك طول الطريق</span></h1>
+    <div class="route">
+      <a class="leg" href="#ist2"><b>إسطنبول</b> ٣–٦ ديسمبر · ٣ ليالٍ</a><span class="arrow">←</span>
+      <a class="leg" href="#pk-tzx2"><b>طرابزون</b> ٦–٨ · ليلتان</a><span class="arrow">←</span>
+      <a class="leg" href="#pk-tzx2"><b>آيدر</b> ٨–١٠ · ليلتان</a><span class="arrow">←</span>
+      <a class="leg" href="#pk-tzx2"><b>طرابزون</b> ١٠–١٢ · ليلتان</a><span class="arrow">←</span>
+      <a class="leg" href="#ist2"><b>إسطنبول</b> ١٢–١٥ ديسمبر · ٣ ليالٍ</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <section>
+      <h2 id="pk-tzx2" class="stage">باقة طرابزون الثابتة <small>٦–١٢ ديسمبر · ٦ ليالٍ · سعر واحد شامل</small></h2>
+      <div class="block pkgcard">
+        <div class="pkghead">
+          <div>
+            <div class="chosen">كل ما يلي داخل سعر الباقة</div>
+            <small>الإفطار مشمول في كل الليالي</small>
+          </div>
+          <div class="pkgprice"><span class="price num" id="fixedUsd-tzx2"></span><small class="num">٣٬٠٠٠ ر.س</small></div>
+        </div>
+        <ol class="stays">
+          <li><span class="sn">١</span><div><b>طرابزون · فندق ميركيور ٥ نجوم</b><small>٦–٨ ديسمبر · ليلتان · غرفة بإطلالة على البحر · مع الإفطار</small></div></li>
+          <li><span class="sn">٢</span><div><b>آيدر · أكواخ على النهر</b><small>٨–١٠ ديسمبر · ليلتان · كوخ خشبي على ضفة النهر · مع الإفطار</small></div></li>
+          <li><span class="sn">٣</span><div><b>طرابزون · فندق ٤ نجوم</b><small>١٠–١٢ ديسمبر · ليلتان · غرفة وصالة بإطلالة على البحر والمدينة · مع الإفطار</small></div></li>
+          <li><span class="sn car">⛟</span><div><b>سيارة بدون سائق</b><small>طول أيام الباقة، استلام وتسليم في مطار طرابزون</small></div></li>
+        </ol>
+      </div>
+
+      <h2 class="stage">ثابت في كل الخيارات</h2>
+      <div class="block fixed-row">
+        <div>
+          <div class="chosen">طيران داخلي ذهاب وعودة · صبيحة ⇄ طرابزون · لشخصين</div>
+          <small>ذهاب AJet · الأحد ٦ ديسمبر ١٢:٤٠ صبيحة ← طرابزون</small>
+          <small>عودة AJet · السبت ١٢ ديسمبر ١٧:٠٥ طرابزون ← ١٩:٠٥ صبيحة</small>
+          <small class="num">٦٬٧٣٨ ل.ت للتذكرتين</small>
+        </div>
+        <div class="price num" id="flightUsd-tzx2"></div>
+      </div>
+
+      <div class="controls">
+        <div class="seg" role="group" aria-label="الترتيب">
+          <button class="sortBest" aria-pressed="true">الأفضل أولاً</button>
+          <button class="sortCheap" aria-pressed="false">الأرخص أولاً</button>
+        </div>
+      </div>
+
+      <h2 id="ist2" class="stage">إسطنبول <small>نفس الفندق للإقامتين · ٣–٦ و١٢–١٥ ديسمبر</small></h2>
+      <div class="list" id="list-ist2"></div>
+
+      <div class="foot">
+        <div>أسعار فنادق إسطنبول لغرفة واحدة لشخصين مع الإفطار، شاملة الضرائب، على تواريخ الرحلة بالضبط، وقد تتغيّر قبل الحجز.</div>
+        <div>التقييم من Google Maps (من ٥) مع عدد المراجعات.</div>
+      </div>
+    </section>
+
+    <aside class="block sum" aria-live="polite">
+      <h2>الفاتورة</h2>
+      <div class="line"><span>إسطنبول · ٦ ليالٍ</span><b class="num" id="s-ist2"></b></div>
+      <div class="sub" id="n-ist2"></div>
+      <div class="line"><span>باقة طرابزون · ٦ ليالٍ + سيارة</span><b class="num" id="sFix-tzx2"></b></div>
+      <div class="sub">ميركيور · أكواخ آيدر · فندق ٤ نجوم</div>
+      <div class="line"><span>طيران داخلي</span><b class="num" id="sFl-tzx2"></b></div>
+      <div class="line"><span>استقبال من المطار</span><b class="num" id="sIn-tzx2"></b></div>
+      <div class="line"><span>توديع إلى المطار</span><b class="num" id="sOut-tzx2"></b></div>
+      <div class="line"><span>رسوم الخدمة</span><b class="num" id="sFee-tzx2"></b></div>
+      <hr>
+      <div class="total num" id="sTotal-tzx2"></div>
+      <div class="pp">الإفطار والسيارة مشمولة · بدون الطيران الدولي والأكل والجولات</div>
+      <div class="send">
+        <label for="cname-tzx2">اسمك</label>
+        <input id="cname-tzx2" class="cname" type="text" autocomplete="name" placeholder="اكتب اسمك">
+        <button type="button" class="sendbtn" data-pkg="tzx2">حفظ وإرسال اختياري عبر واتساب</button>
+        <small>يفتح واتساب وفيه ملخص اختياراتك جاهز، اضغط إرسال فقط.</small>
+      </div>
+    </aside>
+  </div>
+  </div>
+
+  <div id="pkg-cap" hidden>
+  <header class="hero">
+    <div class="eyebrow">عرض رحلة · شخصان · ٣–١٥ ديسمبر ٢٠٢٦</div>
+    <h1>كابادوكيا ووديانها الحجرية<span>اختر سكن كل محطة، والسعر النهائي يتحدّث مباشرة</span></h1>
     <div class="route">
       <a class="leg" href="#istc"><b>إسطنبول</b> ٣–٦ ديسمبر · ٣ ليالٍ</a><span class="arrow">←</span>
       <a class="leg" href="#cap"><b>كابادوكيا</b> ٦–١٠ · ٤ ليالٍ</a><span class="arrow">←</span>
@@ -356,9 +555,9 @@ aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
   </div>
 
   <div id="pkg-cap2" hidden>
-  <header>
+  <header class="hero">
     <div class="eyebrow">عرض رحلة · شخصان · ٣–١٥ ديسمبر ٢٠٢٦</div>
-    <h1>اختر سكن كل محطة، والسعر النهائي يتحدّث مباشرة</h1>
+    <h1>كابادوكيا الشاملة<span>جناح بجاكوزي والمنطاد وكل الفعاليات بسعر واحد</span></h1>
     <div class="route">
       <a class="leg" href="#istc2"><b>إسطنبول</b> ٣–٦ ديسمبر · ٣ ليالٍ</a><span class="arrow">←</span>
       <a class="leg" href="#cap2"><b>كابادوكيا</b> ٦–١٠ · ٤ ليالٍ · باقة شاملة</a><span class="arrow">←</span>
@@ -458,6 +657,13 @@ const STAGES = {
   {id:"marriott-sisli", tier:"رفاهية", tid:2198710, n:"Istanbul Marriott Hotel Şişli", area:"شيشلي · مجيدية كوي", st:5, g:4.5, gc:"5٬501", t1:31790, t2:42552, jac:"spa", pid:"ChIJVfW5LR23yhQRSEYutBWzIAg", note:"مسبح داخلي وساونا وجاكوزي، موقف سيارات، الشارع أمامه مزدحم."},
   {id:"divan", tier:"فخم جداً", tid:746240, n:"Divan İstanbul", area:"حربية", st:5, g:4.7, gc:"5٬395", t1:31270, t2:42242, jac:"unk", pid:"ChIJyS6FdmW3yhQREOoLHOrasR8", note:"٣ دقائق مشياً من ميدان تقسيم بعيداً عن شوارع البارات، سبا ومسبح داخلي، إلغاء مجاني."},
  ]},
+ ist2:{ci:[['2026-12-03','2026-12-06'],['2026-12-12','2026-12-15']], two:true, d2:'١٢–١٥ ديسمبر', n2:3, items:[
+  {id:"kalyon", tier:"جداً اقتصادي", tid:744288, n:"Kalyon Hotel Istanbul", area:"سلطان أحمد (الساحل)", st:4, g:4.2, gc:"1٬922", t1:12611, t2:12990, jac:"no", pid:"ChIJz1zViZi5yhQRL9LY_cTYc8w", note:"موقع ممتاز على البحر؛ المبنى قديم ويحتاج تجديد حسب المراجعات."},
+  {id:"hampton-sisli", tier:"اقتصادي مريح", tid:116781563, n:"Hampton by Hilton Istanbul Şişli", area:"شيشلي · دولابدره", st:4, g:4.6, gc:"524", t1:15727, t2:14418, jac:"no", pid:"ChIJ5Z8KWWy3yhQRtZBt2et6OzI", note:"فندق جديد ونظيف بمعايير هيلتون، أفضل قيمة مقابل السعر."},
+  {id:"amira", tier:"متوسط", tid:745615, n:"Hotel Amira Istanbul", area:"سلطان أحمد", st:4, g:4.7, gc:"1٬032", t1:18901, t2:17401, jac:"spa", pid:"ChIJr18WRZi5yhQRd2UBDpmH0t4", note:"بوتيك هادئ مشياً للجامع الأزرق وآيا صوفيا، إفطار مشهود له."},
+  {id:"marriott-sisli", tier:"رفاهية", tid:2198710, n:"Istanbul Marriott Hotel Şişli", area:"شيشلي · مجيدية كوي", st:5, g:4.5, gc:"5٬501", t1:31790, t2:31439, jac:"spa", pid:"ChIJVfW5LR23yhQRSEYutBWzIAg", note:"مسبح داخلي وساونا وجاكوزي، موقف سيارات، الشارع أمامه مزدحم."},
+  {id:"divan", tier:"فخم جداً", tid:746240, n:"Divan İstanbul", area:"حربية", st:5, g:4.7, gc:"5٬395", t1:31270, t2:31307, jac:"unk", pid:"ChIJyS6FdmW3yhQREOoLHOrasR8", note:"٣ دقائق مشياً من ميدان تقسيم بعيداً عن شوارع البارات، سبا ومسبح داخلي، إلغاء مجاني."},
+ ]},
  istc:{ci:[['2026-12-03','2026-12-06'],['2026-12-10','2026-12-15']], two:true, d2:'١٠–١٥ ديسمبر', n2:5, items:[
   {id:"kalyon", tier:"جداً اقتصادي", tid:744288, n:"Kalyon Hotel Istanbul", area:"سلطان أحمد (الساحل)", st:4, g:4.2, gc:"1٬922", t1:12611, t2:21788, jac:"no", pid:"ChIJz1zViZi5yhQRL9LY_cTYc8w", note:"موقع ممتاز على البحر؛ المبنى قديم ويحتاج تجديد حسب المراجعات."},
   {id:"hampton-sisli", tier:"اقتصادي مريح", tid:116781563, n:"Hampton by Hilton Istanbul Şişli", area:"شيشلي · دولابدره", st:4, g:4.6, gc:"524", t1:15727, t2:22676, jac:"no", pid:"ChIJ5Z8KWWy3yhQRtZBt2et6OzI", note:"فندق جديد ونظيف بمعايير هيلتون، أفضل قيمة مقابل السعر."},
@@ -467,7 +673,7 @@ const STAGES = {
  ]},
  tzx:{ci:[['2026-12-06','2026-12-07']], items:[
   {id:"novotel-tzx", tid:2107378, n:"Novotel Trabzon", area:"يومرا · ١٠ دقائق من المطار", st:4, g:4.4, gc:"6٬088", t:4958, jac:"spa", pid:"ChIJI_6jxqVMZEARjjuvijYUCv0", note:"بجانب فوروم مول، أقرب خيار للمطار؛ شكاوى من حرارة الغرف شتاءً."},
-  {id:"sera-lake", tid:8720985, n:"Sera Lake Resort Hotel Spa", area:"بحيرة سيرا · أقجه آباد", st:4, g:4.4, gc:"1٬857", t:3728, jac:"spa", pid:"ChIJAz-rbSk-ZEARZopktBjgwlg", note:"على بحيرة سيرا وسط الغابة، سبا؛ الطريق للفندق منحدر والموقف ضيق."},
+  {id:"movenpick-tzx", tid:71989728, n:"Mövenpick Hotel Trabzon", area:"يالنجاك · على البحر · ١٠ دقائق من المطار", st:5, g:4.2, gc:"2٬179", t:4529, jac:"spa", pid:"ChIJIdtB88A7ZEARPtwlvl3ymv0", note:"على الساحل مباشرة بإطلالة على البحر الأسود، مسبح داخلي وسبا، وإفطار بوفيه واسع."},
   {id:"mercure-tzx", tid:72845597, n:"Mercure Trabzon Hotel", area:"يالنجاك · ١٠ دقائق من المطار", st:5, g:4.3, gc:"1٬862", t:5036, jac:"no", pid:"ChIJeTczX1k7ZEARVxw4Vclwf-I", note:"غرف واسعة بإطلالة بحرية، موقف تحت الأرض مجاني، إفطار قوي."},
  ]},
  ayd:{ci:[['2026-12-07','2026-12-09']], items:[
@@ -497,6 +703,7 @@ const PKGS = {
   cap2:{label:"باقة كابادوكيا ٢", order:["istc2","cap2"], flightTRY:10744.78, carUSD:0},
   tzx:{label:"باقة طرابزون", order:["ist","tzx","ayd","uzg"], flightTRY:3525*2, carUSD:190},
   cap:{label:"باقة كابادوكيا", order:["istc","cap"], flightTRY:10744.78, carUSD:0},
+  tzx2:{label:"باقة طرابزون ٢", order:["ist2"], flightTRY:6738, carUSD:0, fixedUSD:800},
 };
 STAGES.istc2={...STAGES.istc};
 Object.values(STAGES).forEach(s=>s.items.forEach((h,i)=>h.rank=i+1));
@@ -507,9 +714,9 @@ const arDigits = n => String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const tlOf = h => h.t!=null ? h.t : h.t1+h.t2;
 const $ = id => document.getElementById(id);
 
-let state = {sel:{ist:"hampton-sisli", istc:"hampton-sisli", istc2:"hampton-sisli", cap2:"simera", tzx:"mercure-tzx", ayd:"hira-jac", uzg:"royal-uzg", cap:"maiya-jac"}, sort:"best", fJac:false, pkg:"tzx"};
-try{const s=JSON.parse(localStorage.getItem("trip-dec-v11")||"null"); if(s){state={...state,...s,sel:{...state.sel,...(s.sel||{})}};}}catch(e){}
-const save=()=>{try{localStorage.setItem("trip-dec-v11",JSON.stringify(state))}catch(e){}};
+let state = {sel:{ist:"hampton-sisli", istc:"hampton-sisli", istc2:"hampton-sisli", ist2:"hampton-sisli", cap2:"simera", tzx:"mercure-tzx", ayd:"hira-jac", uzg:"royal-uzg", cap:"maiya-jac"}, sort:"best", fJac:false, pkg:"tzx"};
+try{const s=JSON.parse(localStorage.getItem("trip-dec-v12")||"null"); if(s){state={...state,...s,sel:{...state.sel,...(s.sel||{})}};}}catch(e){}
+const save=()=>{try{localStorage.setItem("trip-dec-v12",JSON.stringify(state))}catch(e){}};
 
 function jacTag(j){
   return {room:['ok','جاكوزي في الغرفة'],spa:['ok','جاكوزي في السبا'],no:['no','بدون جاكوزي'],unk:['unk','سبا · الجاكوزي غير مؤكد']}[j];
@@ -542,7 +749,7 @@ function pick(key){const s=STAGES[key];return s.items.find(h=>h.id===state.sel[k
 function totalOf(p){
   const P=PKGS[p]; let hotelsTL=0;
   P.order.forEach(k=>hotelsTL+=tlOf(pick(k)));
-  return (hotelsTL+P.flightTRY)/FX + P.carUSD + PICKUP_USD + DROPOFF_USD + FEES_USD;
+  return (hotelsTL+P.flightTRY)/FX + P.carUSD + (P.fixedUSD||0) + PICKUP_USD + DROPOFF_USD + FEES_USD;
 }
 function render(){
   document.querySelectorAll(".fJac").forEach(c=>c.checked=state.fJac);
@@ -556,6 +763,7 @@ function render(){
     $("sOut-"+p).textContent=usd(DROPOFF_USD);
     $("sFee-"+p).textContent=usd(FEES_USD);
     $("sTotal-"+p).textContent=usd(totalOf(p));
+    if(P.fixedUSD){$("fixedUsd-"+p).textContent=usd(P.fixedUSD);$("sFix-"+p).textContent=usd(P.fixedUSD);}
   });
   $("carUsd").textContent=usd(PKGS.tzx.carUSD);
   $("sCar").textContent=usd(PKGS.tzx.carUSD);
@@ -566,9 +774,9 @@ document.querySelectorAll(".sortBest").forEach(b=>b.onclick=()=>{state.sort="bes
 document.querySelectorAll(".sortCheap").forEach(b=>b.onclick=()=>{state.sort="cheap";save();render()});
 document.querySelectorAll(".fJac").forEach(c=>c.onchange=e=>{state.fJac=e.target.checked;save();render()});
 function showPkg(k){
-  document.querySelectorAll('.pkgs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.pkg===k));
+  document.querySelectorAll('.pkgs button').forEach(b=>{b.setAttribute('aria-selected',b.dataset.pkg===k);if(b.dataset.pkg===k){const n=b.parentElement;n.scrollLeft=b.offsetLeft-(n.clientWidth-b.offsetWidth)/2;}});
   Object.keys(PKGS).forEach(p=>{$('pkg-'+p).hidden=k!==p;});
-  state.pkg=k;save();render();
+  state.pkg=k;document.querySelector('.wrap').dataset.pkg=k;$('mbar').dataset.pkg=k;save();render();window.scrollTo({top:0,behavior:'smooth'});
 }
 document.querySelectorAll('.pkgs button').forEach(b=>b.onclick=()=>showPkg(b.dataset.pkg));
 showPkg(PKGS[state.pkg]?state.pkg:'tzx');
@@ -580,8 +788,9 @@ function summary(p){
   L.push("اختياري لرحلة ديسمبر 2026 — "+P.label);
   if(name) L.push("الاسم: "+name);
   L.push("");
-  const labels={ist:"إسطنبول (3–6 و11–15 ديسمبر)",istc:"إسطنبول (3–6 و10–15 ديسمبر)",tzx:"طرابزون (6–7 ديسمبر)",ayd:"آيدر (7–9 ديسمبر)",uzg:"أوزونغول (9–11 ديسمبر)",cap:"كابادوكيا (6–10 ديسمبر)",istc2:"إسطنبول (3–6 و10–15 ديسمبر)",cap2:"باقة كابادوكيا الشاملة (6–10 ديسمبر: جاكوزي، منطاد، ATV، جولة، فخار)"};
+  const labels={ist:"إسطنبول (3–6 و11–15 ديسمبر)",istc:"إسطنبول (3–6 و10–15 ديسمبر)",tzx:"طرابزون (6–7 ديسمبر)",ayd:"آيدر (7–9 ديسمبر)",uzg:"أوزونغول (9–11 ديسمبر)",cap:"كابادوكيا (6–10 ديسمبر)",istc2:"إسطنبول (3–6 و10–15 ديسمبر)",ist2:"إسطنبول (3–6 و12–15 ديسمبر)",cap2:"باقة كابادوكيا الشاملة (6–10 ديسمبر: جاكوزي، منطاد، ATV، جولة، فخار)"};
   P.order.forEach(k=>{const h=pick(k);L.push("• "+labels[k]+": "+h.n+" — "+usd(tlOf(h)/FX));});
+  if(P.fixedUSD) L.push("• باقة طرابزون الثابتة (6–12 ديسمبر: ميركيور 5★ إطلالة بحر، أكواخ آيدر على النهر، فندق 4★ غرفة وصالة، الإفطار، سيارة بدون سائق): "+usd(P.fixedUSD));
   L.push("• طيران داخلي: "+usd(P.flightTRY/FX));
   if(P.carUSD) L.push("• سيارة SUV: "+usd(P.carUSD));
   L.push("• استقبال وتوديع: "+usd(PICKUP_USD+DROPOFF_USD));
@@ -600,6 +809,5 @@ document.querySelectorAll(".sendbtn[data-pkg]").forEach(b=>b.onclick=()=>sendCho
 document.getElementById("mSend").onclick=()=>sendChoice(PKGS[state.pkg]?state.pkg:"tzx");
 document.querySelectorAll(".cname").forEach(i=>{i.value=state.name||"";i.oninput=e=>{state.name=e.target.value;document.querySelectorAll(".cname").forEach(o=>{if(o!==e.target)o.value=state.name});save();};});
 </script>
-
 </body>
 </html>
