@@ -131,6 +131,7 @@ aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
   <nav class="pkgs" role="tablist" aria-label="الباقات">
     <button role="tab" id="tab-tzx" aria-selected="true" data-pkg="tzx">باقة طرابزون</button>
     <button role="tab" id="tab-cap" aria-selected="false" data-pkg="cap">باقة كابادوكيا</button>
+    <button role="tab" id="tab-cap2" aria-selected="false" data-pkg="cap2">باقة كابادوكيا ٢</button>
   </nav>
 
   <div id="pkg-tzx">
@@ -353,6 +354,88 @@ aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
     </aside>
   </div>
   </div>
+
+  <div id="pkg-cap2" hidden>
+  <header>
+    <div class="eyebrow">عرض رحلة · شخصان · ٣–١٥ ديسمبر ٢٠٢٦</div>
+    <h1>اختر سكن كل محطة، والسعر النهائي يتحدّث مباشرة</h1>
+    <div class="route">
+      <a class="leg" href="#istc2"><b>إسطنبول</b> ٣–٦ ديسمبر · ٣ ليالٍ</a><span class="arrow">←</span>
+      <a class="leg" href="#cap2"><b>كابادوكيا</b> ٦–١٠ · ٤ ليالٍ · باقة شاملة</a><span class="arrow">←</span>
+      <a class="leg" href="#istc2"><b>إسطنبول</b> ١٠–١٥ ديسمبر · ٥ ليالٍ</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <section>
+      <h2>ثابت في كل الخيارات</h2>
+      <div class="block fixed-row">
+        <div>
+          <div class="chosen">طيران داخلي ذهاب وعودة · إسطنبول ⇄ نوشهير (كابادوكيا) · لشخصين</div>
+          <small>ذهاب AJet VF3270 · الأحد ٦ ديسمبر ١٨:٣٠ صبيحة ← ١٩:٤٥ نوشهير</small>
+          <small>عودة الخطوط التركية TK2001 · الخميس ١٠ ديسمبر ٠٩:٣٥ نوشهير ← ١١:١٠ مطار إسطنبول</small>
+          <small class="num">١٠٬٧٤٤٫٧٨ ل.ت للتذكرتين</small>
+        </div>
+        <div class="price num" id="flightUsd-cap2"></div>
+      </div>
+
+      <div class="controls">
+        <div class="seg" role="group" aria-label="الترتيب">
+          <button class="sortBest" aria-pressed="true">الأفضل أولاً</button>
+          <button class="sortCheap" aria-pressed="false">الأرخص أولاً</button>
+        </div>
+        <label class="chk"><input type="checkbox" class="fJac"> جاكوزي فقط</label>
+      </div>
+
+      <h2 id="istc2" class="stage">إسطنبول <small>نفس الفندق للإقامتين · ٣–٦ و١٠–١٥ ديسمبر</small></h2>
+      <div class="list" id="list-istc2"></div>
+
+      <h2 id="cap2" class="stage">كابادوكيا · أوشيسار <small>٦–١٠ ديسمبر · ٤ ليالٍ · باقة شاملة كل الفعاليات</small></h2>
+      <div class="list" id="list-cap2"></div>
+
+      <h2 class="stage">يشمل سعر باقة كابادوكيا <small>نفس المحتوى في الخيارين</small></h2>
+      <div class="block plan">
+        <ul class="incl">
+          <li>الإقامة في جناح كينغ بجاكوزي، ٤ ليالٍ / ٥ أيام.</li>
+          <li>تجهيز خاص للغرفة في الليلة الأولى مع طبق فواكه وضيافة.</li>
+          <li>دخول مبكر وخروج متأخر حسب التوفر.</li>
+          <li>إفطار بوفيه مفتوح أو إفطار تركي تقليدي طوال الإقامة.</li>
+          <li>رحلة المنطاد.</li>
+          <li>جولة ATV.</li>
+          <li>جولة في المنطقة.</li>
+          <li>تجربة صناعة الفخار هدية.</li>
+        </ul>
+        <div class="tip">كل الفعاليات أعلاه داخلة في سعر الباقة، ولا يوجد أي مبلغ إضافي عليها.</div>
+      </div>
+
+      <div class="foot">
+        <div>الأسعار لغرفة واحدة لشخصين مع الإفطار، شاملة الضرائب، على تواريخ الرحلة بالضبط، وقد تتغيّر قبل الحجز.</div>
+        <div>التقييم من Google Maps (من ٥) مع عدد المراجعات.</div>
+      </div>
+    </section>
+
+    <aside class="block sum" aria-live="polite">
+      <h2>الفاتورة</h2>
+      <div class="line"><span>إسطنبول · ٨ ليالٍ</span><b class="num" id="s-istc2"></b></div>
+      <div class="sub" id="n-istc2"></div>
+      <div class="line"><span>كابادوكيا · ٤ ليالٍ</span><b class="num" id="s-cap2"></b></div>
+      <div class="sub" id="n-cap2"></div>
+      <div class="line"><span>طيران داخلي</span><b class="num" id="sFl-cap2"></b></div>
+      <div class="line"><span>استقبال من المطار</span><b class="num" id="sIn-cap2"></b></div>
+      <div class="line"><span>توديع إلى المطار</span><b class="num" id="sOut-cap2"></b></div>
+      <div class="line"><span>رسوم الخدمة</span><b class="num" id="sFee-cap2"></b></div>
+      <hr>
+      <div class="total num" id="sTotal-cap2"></div>
+      <div class="pp">الإفطار والمنطاد وATV والجولة والفخار مشمولة · بدون الطيران الدولي والأكل</div>
+      <div class="send">
+        <label for="cname-cap2">اسمك</label>
+        <input id="cname-cap2" class="cname" type="text" autocomplete="name" placeholder="اكتب اسمك">
+        <button type="button" class="sendbtn" data-pkg="cap2">حفظ وإرسال اختياري عبر واتساب</button>
+        <small>يفتح واتساب وفيه ملخص اختياراتك جاهز، اضغط إرسال فقط.</small>
+      </div>
+    </aside>
+  </div>
+  </div>
 </div>
 
 <div class="mobilebar" id="mbar" dir="rtl" lang="ar" aria-live="polite">
@@ -397,6 +480,10 @@ const STAGES = {
   {id:"royal-uzg", tid:4410031, n:"Royal Uzungöl Hotel & Spa", area:"طرف البحيرة · هادئ", st:0, cls:"فندق وسبا", g:4.2, gc:"686", t:10544, jac:"spa", pid:"ChIJ4UL-hbbGZUAR1hyXdpvPNQE", note:"مسبح داخلي دافئ وساونا وحمام تركي، ١٥ دقيقة مشياً للمركز، موقف كبير. نوع الغرفة يحدده الفندق عند الوصول."},
   {id:"inan-kardesler", tid:6283203, n:"Inan Kardeşler Hotel", area:"مركز أوزونغول", st:0, cls:"فندق", g:4.1, gc:"2٬341", t:6775, jac:"no", pid:"ChIJf_74OGKUZUARAzEDFnWoaEY", note:"دقائق مشي للبحيرة؛ الغرف صغيرة والمراجعات متفاوتة عن النظافة."},
  ]},
+ cap2:{ci:[['2026-12-06','2026-12-10']], pkgdeal:true, items:[
+  {id:"simera", n:"Simera in Cappadocia", area:"أوشيسار · مشي لقلعة أوشيسار", st:0, cls:"فندق كهف · باقة شاملة", g:4.7, gc:"378", t:29000, jac:"room", pid:"ChIJuTmawIxpKhURK-4dYCuVig8", note:"جناح كينغ بجاكوزي. تراس على السطح بإطلالة مفتوحة على المناطيد وقت الشروق، وإفطار مشهود له، والغرف دافئة في الشتاء."},
+  {id:"novela", n:"Novela in Stone House", area:"أوشيسار", st:0, cls:"فندق بوتيك · باقة شاملة", g:4.8, gc:"95", t:26000, jac:"room", pid:"ChIJ9QRipDppKhURHDG5CVvmxNw", note:"جناح كينغ بجاكوزي في فندق حجري بوتيك عائلي هادئ، والمالك يرتب الجولات بنفسه."},
+ ]},
  cap:{ci:[['2026-12-06','2026-12-10']], items:[
   {id:"avlu-cave", tid:9491938, n:"Avlu Cave House", area:"غوريمه · ٥–٧ دقائق مشياً للمركز", st:0, cls:"فندق كهف", g:4.7, gc:"197", t:9290, jac:"no", pid:"ChIJ4Yzcq1FpKhURhk02hkl3K5M", note:"غرف كهف دافئة وسطح بإطلالة على غوريمه للإفطار والمناطيد. فندق عائلي صغير، والموظفين يرتبون الجولات والمنطاد."},
   {id:"castle-cave", tid:22886980, n:"Castle Cave Hotel", area:"وسط غوريمه", st:4, g:4.7, gc:"563", t:15163, jac:"no", pid:"ChIJo0UQUHdoKhURHaaBAWdD9_k", note:"من أجمل أسطح غوريمه لمشاهدة المناطيد، مع مطعم على السطح. غرف كهف نظيفة وإفطار قوي، وكل شي حوله مشي."},
@@ -407,9 +494,11 @@ const STAGES = {
  ]},
 };
 const PKGS = {
+  cap2:{label:"باقة كابادوكيا ٢", order:["istc2","cap2"], flightTRY:10744.78, carUSD:0},
   tzx:{label:"باقة طرابزون", order:["ist","tzx","ayd","uzg"], flightTRY:3525*2, carUSD:190},
   cap:{label:"باقة كابادوكيا", order:["istc","cap"], flightTRY:10744.78, carUSD:0},
 };
+STAGES.istc2={...STAGES.istc};
 Object.values(STAGES).forEach(s=>s.items.forEach((h,i)=>h.rank=i+1));
 
 const usd = n => "$" + Math.round(n).toLocaleString("en-US");
@@ -418,9 +507,9 @@ const arDigits = n => String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const tlOf = h => h.t!=null ? h.t : h.t1+h.t2;
 const $ = id => document.getElementById(id);
 
-let state = {sel:{ist:"hampton-sisli", istc:"hampton-sisli", tzx:"mercure-tzx", ayd:"hira-jac", uzg:"royal-uzg", cap:"maiya-jac"}, sort:"best", fJac:false, pkg:"tzx"};
-try{const s=JSON.parse(localStorage.getItem("trip-dec-v10")||"null"); if(s){state={...state,...s,sel:{...state.sel,...(s.sel||{})}};}}catch(e){}
-const save=()=>{try{localStorage.setItem("trip-dec-v10",JSON.stringify(state))}catch(e){}};
+let state = {sel:{ist:"hampton-sisli", istc:"hampton-sisli", istc2:"hampton-sisli", cap2:"simera", tzx:"mercure-tzx", ayd:"hira-jac", uzg:"royal-uzg", cap:"maiya-jac"}, sort:"best", fJac:false, pkg:"tzx"};
+try{const s=JSON.parse(localStorage.getItem("trip-dec-v11")||"null"); if(s){state={...state,...s,sel:{...state.sel,...(s.sel||{})}};}}catch(e){}
+const save=()=>{try{localStorage.setItem("trip-dec-v11",JSON.stringify(state))}catch(e){}};
 
 function jacTag(j){
   return {room:['ok','جاكوزي في الغرفة'],spa:['ok','جاكوزي في السبا'],no:['no','بدون جاكوزي'],unk:['unk','سبا · الجاكوزي غير مؤكد']}[j];
@@ -441,10 +530,10 @@ function renderStage(key){
       <div style="min-width:0">
         <div class="hname"><span class="rank">#${arDigits(h.rank)}</span>${h.n}<span class="stars">${h.cls ? h.cls : "★".repeat(h.st)}</span></div>
         <div class="meta"><span>${h.area}</span><span>Google <span class="g num">${h.g.toFixed(1)}</span> (${h.gc})</span><a href="https://www.google.com/maps/place/?q=place_id:${h.pid}" target="_blank" rel="noopener">الصور والموقع ↗</a></div>
-        <div class="tags"><span class="tag ${j[0]}">${j[1]}</span><span class="tag ok">الإفطار مشمول</span></div>
+        <div class="tags"><span class="tag ${j[0]}">${j[1]}</span><span class="tag ok">الإفطار مشمول</span>${s.pkgdeal?'<span class="tag ok">المنطاد + ATV + جولة + فخار</span>':''}</div>
         <div class="note">${h.note}</div>
       </div>
-      <div class="hprice"><span class="n num">${usd(tlOf(h)/FX)}</span><small>${s.two?arDigits(3+s.n2)+" ليالٍ":"للإقامة"}</small>${s.two?`<small class="num">${usd(h.t1/FX)} + ${usd(h.t2/FX)}</small>`:""}</div>`;
+      <div class="hprice"><span class="n num">${usd(tlOf(h)/FX)}</span><small>${s.two?arDigits(3+s.n2)+" ليالٍ":(s.pkgdeal?"الباقة كاملة":"للإقامة")}</small>${s.two?`<small class="num">${usd(h.t1/FX)} + ${usd(h.t2/FX)}</small>`:""}</div>`;
     el.querySelector("input").addEventListener("change",()=>{state.sel[key]=h.id;save();render();});
     list.appendChild(el);
   });
@@ -478,8 +567,7 @@ document.querySelectorAll(".sortCheap").forEach(b=>b.onclick=()=>{state.sort="ch
 document.querySelectorAll(".fJac").forEach(c=>c.onchange=e=>{state.fJac=e.target.checked;save();render()});
 function showPkg(k){
   document.querySelectorAll('.pkgs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.pkg===k));
-  $('pkg-tzx').hidden=k!=='tzx';
-  $('pkg-cap').hidden=k!=='cap';
+  Object.keys(PKGS).forEach(p=>{$('pkg-'+p).hidden=k!==p;});
   state.pkg=k;save();render();
 }
 document.querySelectorAll('.pkgs button').forEach(b=>b.onclick=()=>showPkg(b.dataset.pkg));
@@ -492,7 +580,7 @@ function summary(p){
   L.push("اختياري لرحلة ديسمبر 2026 — "+P.label);
   if(name) L.push("الاسم: "+name);
   L.push("");
-  const labels={ist:"إسطنبول (3–6 و11–15 ديسمبر)",istc:"إسطنبول (3–6 و10–15 ديسمبر)",tzx:"طرابزون (6–7 ديسمبر)",ayd:"آيدر (7–9 ديسمبر)",uzg:"أوزونغول (9–11 ديسمبر)",cap:"كابادوكيا (6–10 ديسمبر)"};
+  const labels={ist:"إسطنبول (3–6 و11–15 ديسمبر)",istc:"إسطنبول (3–6 و10–15 ديسمبر)",tzx:"طرابزون (6–7 ديسمبر)",ayd:"آيدر (7–9 ديسمبر)",uzg:"أوزونغول (9–11 ديسمبر)",cap:"كابادوكيا (6–10 ديسمبر)",istc2:"إسطنبول (3–6 و10–15 ديسمبر)",cap2:"باقة كابادوكيا الشاملة (6–10 ديسمبر: جاكوزي، منطاد، ATV، جولة، فخار)"};
   P.order.forEach(k=>{const h=pick(k);L.push("• "+labels[k]+": "+h.n+" — "+usd(tlOf(h)/FX));});
   L.push("• طيران داخلي: "+usd(P.flightTRY/FX));
   if(P.carUSD) L.push("• سيارة SUV: "+usd(P.carUSD));
@@ -509,7 +597,7 @@ function sendChoice(p){
   if(!w) location.href=url;
 }
 document.querySelectorAll(".sendbtn[data-pkg]").forEach(b=>b.onclick=()=>sendChoice(b.dataset.pkg));
-document.getElementById("mSend").onclick=()=>sendChoice(state.pkg==="cap"?"cap":"tzx");
+document.getElementById("mSend").onclick=()=>sendChoice(PKGS[state.pkg]?state.pkg:"tzx");
 document.querySelectorAll(".cname").forEach(i=>{i.value=state.name||"";i.oninput=e=>{state.name=e.target.value;document.querySelectorAll(".cname").forEach(o=>{if(o!==e.target)o.value=state.name});save();};});
 </script>
 
