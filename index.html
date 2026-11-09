@@ -238,6 +238,11 @@ section>h2:first-child{margin-top:0}
 @media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}aside.sum{position:static}}
 @media (max-width:560px){.hero{border-radius:20px}.stage{font-size:20px}.hprice .n{font-size:20px}}
 @media (prefers-reduced-motion:reduce){.hotel:hover,.sendbtn:hover{transform:none}}
+.drv .stepper{gap:12px;font-size:15px;font-weight:600}
+.drv .stepper span{min-width:58px;text-align:center}
+.drv .stepper button{width:36px;height:36px;font-size:18px;line-height:1;background:var(--accent-soft);color:var(--accent);border:0;font-weight:700}
+.drv .stepper button:hover{background:var(--accent);color:#fff}
+.drv .chosen{font-family:var(--display);font-size:20px;color:var(--accent)}
 </style>
 </head>
 <body>
@@ -275,6 +280,19 @@ section>h2:first-child{margin-top:0}
           <small class="num">٧٬٠٥٠ ل.ت للتذكرتين</small>
         </div>
         <div class="price num" id="flightUsd-tzx"></div>
+      </div>
+
+      <h2 class="stage">سائق خاص في إسطنبول <small>اختياري · سيارة مع سائق ١٠ ساعات في اليوم</small></h2>
+      <div class="block fixed-row drv">
+        <div>
+          <div class="chosen">$140 لليوم</div>
+          <small>اختر عدد الأيام اللي تحتاج فيها سائق</small>
+        </div>
+        <div class="stepper" role="group" aria-label="أيام السائق">
+          <button type="button" class="drvMinus" data-pkg="tzx" aria-label="أقل">−</button>
+          <span class="num" id="drvN-tzx">٠ يوم</span>
+          <button type="button" class="drvPlus" data-pkg="tzx" aria-label="أكثر">+</button>
+        </div>
       </div>
 
       <div class="controls">
@@ -349,6 +367,7 @@ section>h2:first-child{margin-top:0}
       <div class="line"><span>سيارة SUV</span><b class="num" id="sCar"></b></div>
       <div class="line"><span>استقبال من المطار</span><b class="num" id="sIn-tzx"></b></div>
       <div class="line"><span>توديع إلى المطار</span><b class="num" id="sOut-tzx"></b></div>
+      <div class="line" id="lDrv-tzx" hidden><span id="tDrv-tzx">سائق خاص إسطنبول</span><b class="num" id="sDrv-tzx"></b></div>
       <div class="line"><span>رسوم الخدمة</span><b class="num" id="sFee-tzx"></b></div>
       <hr>
       <div class="total num" id="sTotal-tzx"></div>
@@ -406,6 +425,19 @@ section>h2:first-child{margin-top:0}
         <div class="price num" id="flightUsd-tzx2"></div>
       </div>
 
+      <h2 class="stage">سائق خاص في إسطنبول <small>اختياري · سيارة مع سائق ١٠ ساعات في اليوم</small></h2>
+      <div class="block fixed-row drv">
+        <div>
+          <div class="chosen">$140 لليوم</div>
+          <small>اختر عدد الأيام اللي تحتاج فيها سائق</small>
+        </div>
+        <div class="stepper" role="group" aria-label="أيام السائق">
+          <button type="button" class="drvMinus" data-pkg="tzx2" aria-label="أقل">−</button>
+          <span class="num" id="drvN-tzx2">٠ يوم</span>
+          <button type="button" class="drvPlus" data-pkg="tzx2" aria-label="أكثر">+</button>
+        </div>
+      </div>
+
       <div class="controls">
         <div class="seg" role="group" aria-label="الترتيب">
           <button class="sortBest" aria-pressed="true">الأفضل أولاً</button>
@@ -431,6 +463,7 @@ section>h2:first-child{margin-top:0}
       <div class="line"><span>طيران داخلي</span><b class="num" id="sFl-tzx2"></b></div>
       <div class="line"><span>استقبال من المطار</span><b class="num" id="sIn-tzx2"></b></div>
       <div class="line"><span>توديع إلى المطار</span><b class="num" id="sOut-tzx2"></b></div>
+      <div class="line" id="lDrv-tzx2" hidden><span id="tDrv-tzx2">سائق خاص إسطنبول</span><b class="num" id="sDrv-tzx2"></b></div>
       <div class="line"><span>رسوم الخدمة</span><b class="num" id="sFee-tzx2"></b></div>
       <hr>
       <div class="total num" id="sTotal-tzx2"></div>
@@ -467,6 +500,19 @@ section>h2:first-child{margin-top:0}
           <small class="num">٧٬٧٠٠ ل.ت للتذكرتين</small>
         </div>
         <div class="price num" id="flightUsd-cap"></div>
+      </div>
+
+      <h2 class="stage">سائق خاص في إسطنبول <small>اختياري · سيارة مع سائق ١٠ ساعات في اليوم</small></h2>
+      <div class="block fixed-row drv">
+        <div>
+          <div class="chosen">$140 لليوم</div>
+          <small>اختر عدد الأيام اللي تحتاج فيها سائق</small>
+        </div>
+        <div class="stepper" role="group" aria-label="أيام السائق">
+          <button type="button" class="drvMinus" data-pkg="cap" aria-label="أقل">−</button>
+          <span class="num" id="drvN-cap">٠ يوم</span>
+          <button type="button" class="drvPlus" data-pkg="cap" aria-label="أكثر">+</button>
+        </div>
       </div>
 
       <div class="controls">
@@ -519,6 +565,7 @@ section>h2:first-child{margin-top:0}
       <div class="line"><span>طيران داخلي</span><b class="num" id="sFl-cap"></b></div>
       <div class="line"><span>استقبال من المطار</span><b class="num" id="sIn-cap"></b></div>
       <div class="line"><span>توديع إلى المطار</span><b class="num" id="sOut-cap"></b></div>
+      <div class="line" id="lDrv-cap" hidden><span id="tDrv-cap">سائق خاص إسطنبول</span><b class="num" id="sDrv-cap"></b></div>
       <div class="line"><span>رسوم الخدمة</span><b class="num" id="sFee-cap"></b></div>
       <hr>
       <div class="total num" id="sTotal-cap"></div>
@@ -555,6 +602,19 @@ section>h2:first-child{margin-top:0}
           <small class="num">٧٬٧٠٠ ل.ت للتذكرتين</small>
         </div>
         <div class="price num" id="flightUsd-cap2"></div>
+      </div>
+
+      <h2 class="stage">سائق خاص في إسطنبول <small>اختياري · سيارة مع سائق ١٠ ساعات في اليوم</small></h2>
+      <div class="block fixed-row drv">
+        <div>
+          <div class="chosen">$140 لليوم</div>
+          <small>اختر عدد الأيام اللي تحتاج فيها سائق</small>
+        </div>
+        <div class="stepper" role="group" aria-label="أيام السائق">
+          <button type="button" class="drvMinus" data-pkg="cap2" aria-label="أقل">−</button>
+          <span class="num" id="drvN-cap2">٠ يوم</span>
+          <button type="button" class="drvPlus" data-pkg="cap2" aria-label="أكثر">+</button>
+        </div>
       </div>
 
       <div class="controls">
@@ -601,6 +661,7 @@ section>h2:first-child{margin-top:0}
       <div class="line"><span>طيران داخلي</span><b class="num" id="sFl-cap2"></b></div>
       <div class="line"><span>استقبال من المطار</span><b class="num" id="sIn-cap2"></b></div>
       <div class="line"><span>توديع إلى المطار</span><b class="num" id="sOut-cap2"></b></div>
+      <div class="line" id="lDrv-cap2" hidden><span id="tDrv-cap2">سائق خاص إسطنبول</span><b class="num" id="sDrv-cap2"></b></div>
       <div class="line"><span>رسوم الخدمة</span><b class="num" id="sFee-cap2"></b></div>
       <hr>
       <div class="total num" id="sTotal-cap2"></div>
@@ -624,7 +685,7 @@ section>h2:first-child{margin-top:0}
 
 <script>
 const FX = 49.5;                     // TRY per USD, street exchange rate set by Mohammed
-const PICKUP_USD = 50, DROPOFF_USD = 50, FEES_USD = 120;   // Istanbul airport transfers + service fees
+const PICKUP_USD = 50, DROPOFF_USD = 50, FEES_USD = 120, DRIVER_USD = 140, DRIVER_MAX = 8;   // Istanbul airport transfers + service fees
 // Hotel prices: total TRY incl. taxes, 1 room, 2 adults, breakfast included — cheapest of Trip.com / Agoda, checked 7 Nov 2026
 // Two-stay Istanbul stages: t1 = 3–6 Dec, t2 = second stay; other stages: t = whole stay
 // jac: "room" | "spa" | "no" | "unk"
@@ -725,10 +786,12 @@ function renderStage(key){
   });
 }
 function pick(key){const s=STAGES[key];return s.items.find(h=>h.id===state.sel[key])||s.items[0];}
+const dayTxt=d=>d===0?"٠ يوم":d===1?"يوم واحد":d===2?"يومان":arDigits(d)+" أيام";
+const drvDays=p=>(state.drv&&state.drv[p])||0;
 function totalOf(p){
   const P=PKGS[p]; let hotelsTL=0;
   P.order.forEach(k=>hotelsTL+=tlOf(pick(k)));
-  return (hotelsTL+P.flightTRY)/FX + P.carUSD + (P.fixedUSD||0) + PICKUP_USD + DROPOFF_USD + FEES_USD;
+  return (hotelsTL+P.flightTRY)/FX + P.carUSD + (P.fixedUSD||0) + drvDays(p)*DRIVER_USD + PICKUP_USD + DROPOFF_USD + FEES_USD;
 }
 function render(){
   document.querySelectorAll(".fJac").forEach(c=>c.checked=state.fJac);
@@ -742,6 +805,7 @@ function render(){
     $("sOut-"+p).textContent=usd(DROPOFF_USD);
     $("sFee-"+p).textContent=usd(FEES_USD);
     $("sTotal-"+p).textContent=usd(totalOf(p));
+    {const d=drvDays(p);$("drvN-"+p).textContent=dayTxt(d);$("lDrv-"+p).hidden=!d;$("tDrv-"+p).textContent="سائق خاص إسطنبول · "+dayTxt(d);$("sDrv-"+p).textContent=usd(d*DRIVER_USD);}
     if(P.fixedUSD){$("fixedUsd-"+p).textContent=usd(P.fixedUSD);$("sFix-"+p).textContent=usd(P.fixedUSD);}
   });
   $("carUsd").textContent=usd(PKGS.tzx.carUSD);
@@ -752,6 +816,9 @@ function render(){
 document.querySelectorAll(".sortBest").forEach(b=>b.onclick=()=>{state.sort="best";save();render()});
 document.querySelectorAll(".sortCheap").forEach(b=>b.onclick=()=>{state.sort="cheap";save();render()});
 document.querySelectorAll(".fJac").forEach(c=>c.onchange=e=>{state.fJac=e.target.checked;save();render()});
+const setDrv=(p,v)=>{state.drv={...(state.drv||{}),[p]:Math.max(0,Math.min(DRIVER_MAX,v))};save();render();};
+document.querySelectorAll(".drvPlus").forEach(b=>b.onclick=()=>setDrv(b.dataset.pkg,drvDays(b.dataset.pkg)+1));
+document.querySelectorAll(".drvMinus").forEach(b=>b.onclick=()=>setDrv(b.dataset.pkg,drvDays(b.dataset.pkg)-1));
 function showPkg(k){
   document.querySelectorAll('.pkgs button').forEach(b=>{b.setAttribute('aria-selected',b.dataset.pkg===k);if(b.dataset.pkg===k){const n=b.parentElement;n.scrollLeft=b.offsetLeft-(n.clientWidth-b.offsetWidth)/2;}});
   Object.keys(PKGS).forEach(p=>{$('pkg-'+p).hidden=k!==p;});
@@ -772,6 +839,7 @@ function summary(p){
   if(P.fixedUSD) L.push("• باقة طرابزون الثابتة (6–12 ديسمبر: ميركيور 5★ إطلالة بحر، أكواخ آيدر على النهر، فندق 4★ غرفة وصالة، الإفطار، سيارة بدون سائق): "+usd(P.fixedUSD));
   L.push("• طيران داخلي: "+usd(P.flightTRY/FX));
   if(P.carUSD) L.push("• سيارة SUV: "+usd(P.carUSD));
+  if(drvDays(p)) L.push("• سائق خاص في إسطنبول ("+drvDays(p)+" أيام × 10 ساعات): "+usd(drvDays(p)*DRIVER_USD));
   L.push("• استقبال وتوديع: "+usd(PICKUP_USD+DROPOFF_USD));
   L.push("• رسوم الخدمة: "+usd(FEES_USD));
   L.push("");
